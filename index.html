@@ -5,23 +5,6 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
     <title>Balatro</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-      #debug {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: rgba(0,0,0,0.85);
-        color: #0f0;
-        font-family: monospace;
-        font-size: 14px;
-        padding: 10px;
-        max-height: 50%;
-        overflow-y: auto;
-        z-index: 9999;
-      }
-      #debug .err { color: #f44; }
-    </style>
   </head>
   <body>
     <canvas id="canvas"></canvas>
@@ -29,6 +12,6 @@
     <script>
       window.alert = function(msg) { console.error('ALERT: ' + msg); };
     </script>
-    <script src="player.js?g=balatro.love&v=11.5&c=1&n=1"></script>
+    <script src="player.js?g=balatro.love&v=11.5&c=1"></script>
   </body>
 </html>
