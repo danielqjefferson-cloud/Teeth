@@ -26,34 +26,8 @@
   <body>
     <canvas id="canvas"></canvas>
     <div id="spinner" class="pending"></div>
-    <div id="debug"></div>
     <script>
-      var dbg = document.getElementById('debug');
-      function log(msg, isErr) {
-        var d = document.createElement('div');
-        d.textContent = new Date().toLocaleTimeString() + ' - ' + msg;
-        if (isErr) d.className = 'err';
-        dbg.appendChild(d);
-        dbg.scrollTop = dbg.scrollHeight;
-      }
-      var _log = console.log, _err = console.error, _warn = console.warn;
-      console.log = function() { _log.apply(console, arguments); log(Array.from(arguments).join(' ')); };
-      console.error = function() { _err.apply(console, arguments); log(Array.from(arguments).join(' '), true); };
-      console.warn = function() { _warn.apply(console, arguments); log(Array.from(arguments).join(' ')); };
-      window.onerror = function(msg, src, line, col, err) {
-        log('ERROR: ' + msg + ' at ' + src + ':' + line + ':' + col, true);
-        if (err && err.stack) log('STACK: ' + err.stack, true);
-      };
-      window.onunhandledrejection = function(e) {
-        log('UNHANDLED REJECTION: ' + (e.reason ? (e.reason.message || e.reason) : e), true);
-      };
-      // Capture alert() messages and show them in the debug log
-      var _alert = window.alert;
-      window.alert = function(msg) {
-        log('ALERT: ' + msg, true);
-      };
-      log('Page loaded. Starting Balatro...');
-      log('SharedArrayBuffer: ' + (typeof SharedArrayBuffer !== 'undefined' ? 'available' : 'NOT available'));
+      window.alert = function(msg) { console.error('ALERT: ' + msg); };
     </script>
     <script src="player.js?g=balatro.love&v=11.5&c=1&n=1"></script>
   </body>
